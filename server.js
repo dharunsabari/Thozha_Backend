@@ -91,7 +91,10 @@ danger. Otherwise always "none". Then a blank line, then your normal reply to hi
 (this part is all he ever sees).
 `.trim();
 
+app.get('/', (req, res) => res.send('Thozhan backend is running.'));
+
 app.post('/api/chat', async (req, res) => {
+  console.log('Received /api/chat request from', req.headers.origin || 'unknown origin');
   try {
     const { messages } = req.body;
     if (!Array.isArray(messages) || messages.length === 0) {
@@ -116,6 +119,9 @@ app.post('/api/chat', async (req, res) => {
       })
     });
 
+    if (!apiRes.ok) {
+      console.error('Anthropic API error', apiRes.status, JSON.stringify(await apiRes.clone().json().catch(() => ({}))));
+    }
     const data = await apiRes.json();
     const raw = data?.content?.find(b => b.type === 'text')?.text || '';
 
