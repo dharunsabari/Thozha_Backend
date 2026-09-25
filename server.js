@@ -21,12 +21,24 @@
  *     persona is instructed to always reply in character, so asking it
  *     to do a mechanical text-conversion task just gets a conversational
  *     reply back instead of the converted text.
+ *  5. /api/tts turns a reply into speech using Google Cloud Text-to-Speech
+ *     (free tier: 4M characters/month for Standard voices), so the app can
+ *     play that back instead of the phone's own on-device TTS engine. See
+ *     speakWithCloudVoice() in index.html for the client side — it falls
+ *     back to the on-device voice if this endpoint is unset, slow, or
+ *     errors, so the app never goes silent just because the cloud voice is
+ *     unavailable.
  *
  * What you must fill in before this works (see .env.example):
  *  - ANTHROPIC_API_KEY        your own Anthropic API key
  *  - TWILIO_ACCOUNT_SID / AUTH_TOKEN / WHATSAPP_FROM   from a Twilio
  *    account with WhatsApp enabled (https://www.twilio.com/whatsapp)
  *  - PARENT_WHATSAPP_NUMBERS  comma-separated, e.g. whatsapp:+9198xxxxxxx
+ *  - GOOGLE_TTS_API_KEY       an API key from a Google Cloud project with
+ *    the "Cloud Text-to-Speech API" enabled (console.cloud.google.com →
+ *    APIs & Services → Credentials → Create API key). Free tier only, no
+ *    billing needed beyond enabling it; stays within quota at this app's
+ *    scale.
  *
  * Deploy this anywhere that can run Node (Render, Railway, a small VPS).
  * Point the frontend's CHAT_ENDPOINT (in index.html) at wherever you host it.
@@ -244,6 +256,58 @@ app.post('/api/transliterate', async (req, res) => {
     const data = await apiRes.json();
     const raw = data?.content?.find(b => b.type === 'text')?.text || '';
     res.json({ text: raw.trim() || text });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'internal error' });
+  }
+});
+
+// ---- Text-to-speech via Google Cloud Text-to-Speech ------------------------
+// The app's own on-device TTS (see speakWithDeviceVoice() in index.html) is
+// what's always available, but sounds robotic, especially for Tamil. This
+// endpoint synthesizes the same text through Google Cloud's TTS instead
+// (free tier — no cost at this app's scale), for the app to play back when
+// the network's up and the call succeeds in time. ElevenLabs was tried
+// first but is metered per character with real ongoing cost; Google's free
+// tier reads Tamil natively and doesn't have that problem.
+const GOOGLE_TTS_API_KEY = process.env.GOOGLE_TTS_API_KEY;
+
+app.post('/api/tts', async (req, res) => {
+  try {
+    const { text, language } = req.body;
+    if (!text || !text.trim()) {
+      return res.status(400).json({ error: 'text required' });
+    }
+    if (!GOOGLE_TTS_API_KEY) {
+      return res.status(503).json({ error: 'cloud tts not configured' });
+    }
+
+    const apiRes = await fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${GOOGLE_TTS_API_KEY}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        input: { text },
+        // Only languageCode + gender, not a specific voice name — lets
+        // Google pick its own default voice per language rather than us
+        // hard-coding a voice id that might not exist for every locale
+        // this app supports (Tamil, Hindi, Telugu, Kannada, Malayalam...).
+        voice: { languageCode: language || 'en-IN', ssmlGender: 'FEMALE' },
+        audioConfig: { audioEncoding: 'MP3' }
+      })
+    });
+
+    if (!apiRes.ok) {
+      console.error('Google TTS API error', apiRes.status, await apiRes.text().catch(() => ''));
+      return res.status(502).json({ error: 'tts upstream error' });
+    }
+
+    const data = await apiRes.json();
+    if (!data.audioContent) {
+      return res.status(502).json({ error: 'tts upstream error' });
+    }
+
+    res.set('Content-Type', 'audio/mpeg');
+    res.send(Buffer.from(data.audioContent, 'base64'));
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'internal error' });
