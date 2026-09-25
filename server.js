@@ -272,6 +272,40 @@ app.post('/api/transliterate', async (req, res) => {
 // tier reads Tamil natively and doesn't have that problem.
 const GOOGLE_TTS_API_KEY = process.env.GOOGLE_TTS_API_KEY;
 
+// "Leda" — warm/conversational, closest fit to a companion voice among the
+// 8 named Chirp 3: HD characters. Chirp 3: HD is Google's generative voice
+// tier (natural pacing/emphasis, not just correct pronunciation) and covers
+// every language this app supports (Tamil, Hindi, Telugu, Kannada,
+// Malayalam, English) — its own free tier (1M characters/month) is separate
+// from and on top of the Standard tier's 4M/month. If a language somehow
+// isn't covered, or the call fails for any other reason, this falls back
+// to a Standard voice (auto-picked by language+gender) rather than failing
+// outright — and if that also fails, the caller (speak() in index.html)
+// falls back further to the on-device voice, so nothing ever goes silent.
+async function synthesizeSpeech(text, language) {
+  const chirpRes = await fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${GOOGLE_TTS_API_KEY}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      input: { text },
+      voice: { languageCode: language, name: `${language}-Chirp3-HD-Leda` },
+      audioConfig: { audioEncoding: 'MP3' }
+    })
+  });
+  if (chirpRes.ok) return chirpRes;
+
+  console.error('Chirp 3 HD TTS error, falling back to Standard voice', chirpRes.status, await chirpRes.text().catch(() => ''));
+  return fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${GOOGLE_TTS_API_KEY}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      input: { text },
+      voice: { languageCode: language, ssmlGender: 'FEMALE' },
+      audioConfig: { audioEncoding: 'MP3' }
+    })
+  });
+}
+
 app.post('/api/tts', async (req, res) => {
   try {
     const { text, language } = req.body;
@@ -282,19 +316,7 @@ app.post('/api/tts', async (req, res) => {
       return res.status(503).json({ error: 'cloud tts not configured' });
     }
 
-    const apiRes = await fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${GOOGLE_TTS_API_KEY}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        input: { text },
-        // Only languageCode + gender, not a specific voice name — lets
-        // Google pick its own default voice per language rather than us
-        // hard-coding a voice id that might not exist for every locale
-        // this app supports (Tamil, Hindi, Telugu, Kannada, Malayalam...).
-        voice: { languageCode: language || 'en-IN', ssmlGender: 'FEMALE' },
-        audioConfig: { audioEncoding: 'MP3' }
-      })
-    });
+    const apiRes = await synthesizeSpeech(text, language || 'en-IN');
 
     if (!apiRes.ok) {
       console.error('Google TTS API error', apiRes.status, await apiRes.text().catch(() => ''));
