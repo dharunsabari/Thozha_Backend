@@ -1,5 +1,5 @@
 {
-  "version": "1.15.0",
-  "notes": "Spoken replies no longer read out punctuation (commas, brackets, line breaks, etc) — only the actual words, in every language",
+  "version": "1.16.0",
+  "notes": "Replies are now read aloud in a clearer cloud voice (with an on-device fallback if offline), and speech pauses naturally at commas and full stops instead of running on",
   "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk"
 }
