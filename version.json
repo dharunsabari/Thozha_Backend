@@ -1,5 +1,5 @@
 {
-  "version": "1.13.0",
-  "notes": "Tamil (and other Indic-language) voice input now converts Tanglish/romanized text to native script automatically before sending, using a new backend endpoint",
+  "version": "1.14.0",
+  "notes": "Spoken replies no longer read emojis out loud — only the actual words",
   "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk"
 }
