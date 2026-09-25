@@ -1,5 +1,5 @@
 {
-  "version": "1.14.0",
-  "notes": "Spoken replies no longer read emojis out loud — only the actual words",
+  "version": "1.15.0",
+  "notes": "Spoken replies no longer read out punctuation (commas, brackets, line breaks, etc) — only the actual words, in every language",
   "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk"
 }
