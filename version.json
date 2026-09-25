@@ -1,5 +1,5 @@
 {
-  "version": "1.12.0",
-  "notes": "Spoken replies now use the phone's own text-to-speech engine (more reliable than before), voice messages pause briefly before sending so you can fix a bad transcript, and reminder alarms/spoken replies still work as before",
+  "version": "1.13.0",
+  "notes": "Tamil (and other Indic-language) voice input now converts Tanglish/romanized text to native script automatically before sending, using a new backend endpoint",
   "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk"
 }

@@ -11,6 +11,13 @@
  *     parent number(s) via Twilio, and shows the son a supportive
  *     message with a real crisis helpline — every time, regardless of
  *     whether the WhatsApp send succeeds.
+ *  4. A separate, small utility endpoint (/api/transliterate) converts
+ *     romanized Indic-language text ("Tanglish" etc, from phones whose
+ *     voice typing doesn't output native script) into native script. It
+ *     deliberately does NOT reuse the companion persona above — that
+ *     persona is instructed to always reply in character, so asking it
+ *     to do a mechanical text-conversion task just gets a conversational
+ *     reply back instead of the converted text.
  *
  * What you must fill in before this works (see .env.example):
  *  - ANTHROPIC_API_KEY        your own Anthropic API key
@@ -141,6 +148,54 @@ app.post('/api/chat', async (req, res) => {
     }
 
     res.json({ reply: reply || "I'm here — tell me more, if you want to.", crisis });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'internal error' });
+  }
+});
+
+// ---- Transliteration utility ---------------------------------------------
+// Separate, minimal system prompt with no companion persona and no crisis
+// parsing — just converts romanized Indic-language text to native script,
+// used when a phone's voice typing outputs "Tanglish"-style Latin spelling
+// instead of the target language's own script.
+const TRANSLITERATE_SYSTEM_PROMPT = `
+You are a silent transliteration utility, not a conversational assistant.
+Convert romanized (Latin-script) Indic-language text into that language's
+native script, preserving the meaning and wording exactly — this is a
+phonetic script conversion, not a translation and not a reply.
+Output ONLY the converted text and nothing else: no greeting, no
+explanation, no quotes, no labels.
+`.trim();
+
+app.post('/api/transliterate', async (req, res) => {
+  try {
+    const { text, language } = req.body;
+    if (!text || !language) {
+      return res.status(400).json({ error: 'text and language required' });
+    }
+
+    const apiRes = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        max_tokens: 300,
+        system: TRANSLITERATE_SYSTEM_PROMPT,
+        messages: [{ role: 'user', content: `Language: ${language}\nText: ${text}` }]
+      })
+    });
+
+    if (!apiRes.ok) {
+      console.error('Anthropic API error', apiRes.status, JSON.stringify(await apiRes.clone().json().catch(() => ({}))));
+    }
+    const data = await apiRes.json();
+    const raw = data?.content?.find(b => b.type === 'text')?.text || '';
+    res.json({ text: raw.trim() || text });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'internal error' });
