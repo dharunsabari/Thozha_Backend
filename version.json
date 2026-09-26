@@ -1,5 +1,5 @@
 {
-  "version": "1.16.0",
-  "notes": "Replies are now read aloud in a clearer cloud voice (with an on-device fallback if offline), and speech pauses naturally at commas and full stops instead of running on",
+  "version": "1.17.0",
+  "notes": "Chat box now stays put at the top while you talk; a new News tab (world/India/Tamil Nadu politics, markets, Tamil cinema-OTT); astrology readings now stick to Tamil/Vedic tradition, plus a Jadhagam PDF reading feature and a classical Jyotisha reference library; a Tamil Panchangam PDF link; and quick support tools (breathing, grounding, helplines) for Mind Winner and Senior modes.",
   "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk"
 }
