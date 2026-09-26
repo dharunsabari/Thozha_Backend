@@ -1,5 +1,5 @@
 {
-  "version": "1.17.0",
-  "notes": "Chat box now stays put at the top while you talk; a new News tab (world/India/Tamil Nadu politics, markets, Tamil cinema-OTT); astrology readings now stick to Tamil/Vedic tradition, plus a Jadhagam PDF reading feature and a classical Jyotisha reference library; a Tamil Panchangam PDF link; and quick support tools (breathing, grounding, helplines) for Mind Winner and Senior modes.",
+  "version": "1.17.1",
+  "notes": "You'll now get a notification when a new update is ready to install. Jadhagam readings now also accept a photo or a Word document, not just a PDF. Acupressure relief now covers neck/shoulders, stomach, and hands/wrists/knees, with gentler guidance for kids and seniors. Fixed the News tab being unreachable on some screens. New: one-tap \"share my location\" with your contacts, and a Vitals log (blood pressure, sugar, weight) under Medicine. Also new: a daily \"how are you\" check-in that quietly lets your family know if it goes unanswered.",
   "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk"
 }

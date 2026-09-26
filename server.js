@@ -214,6 +214,23 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
+// ---- Wellness check-in alert -----------------------------------------------
+// Called by the app's native daily alarm (WellnessCheckinReceiver /
+// ReminderAlarmReceiver in the Android project) when the "How are you
+// today?" notification goes unanswered for 6 hours — reuses the same
+// Twilio WhatsApp path crisis chat messages already trigger, since that's
+// the one alert mechanism that doesn't need the app open or a tap inside
+// WhatsApp to actually send.
+app.post('/api/wellness-alert', async (req, res) => {
+  try {
+    await notifyParents('', 'missed daily wellness check-in');
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'internal error' });
+  }
+});
+
 // ---- Transliteration utility ---------------------------------------------
 // Separate, minimal system prompt with no companion persona and no crisis
 // parsing — just converts romanized Indic-language text to native script,
