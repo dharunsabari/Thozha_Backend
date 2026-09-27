@@ -353,6 +353,81 @@ app.post('/api/tts', async (req, res) => {
   }
 });
 
+// ---- News & market data proxy ---------------------------------------------
+// The app's News tab used to hit Google News RSS and Yahoo Finance through a
+// public CORS-proxy (api.allorigins.win) directly from the phone, since a
+// browser/WebView can't fetch either of those without CORS headers. That
+// public proxy is frequently down or rate-limited, which is why news and
+// market data kept failing to load. Doing the fetch here instead — a normal
+// server-to-server request, no CORS involved — removes that flaky dependency
+// entirely (same idea as /api/transliterate proxying a mechanical task
+// through this already-required backend).
+const NEWS_QUERIES = {
+  world: { q: 'world news', hl: 'en-IN', gl: 'IN' },
+  india: { q: 'India politics', hl: 'en-IN', gl: 'IN' },
+  south: { q: 'South India politics Karnataka Kerala Andhra Telangana', hl: 'en-IN', gl: 'IN' },
+  tn: { q: 'Tamil Nadu politics', hl: 'en-IN', gl: 'IN' },
+  markets: { q: 'Indian stock market Sensex Nifty', hl: 'en-IN', gl: 'IN' },
+  cinema: { q: 'Tamil cinema OTT release', hl: 'en-IN', gl: 'IN' }
+};
+
+function decodeXmlEntities(str) {
+  return str
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#0*39;/g, "'").replace(/&apos;/g, "'")
+    .replace(/&amp;/g, '&')
+    .trim();
+}
+
+function extractTag(block, tag) {
+  const match = block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`));
+  return match ? decodeXmlEntities(match[1]) : '';
+}
+
+app.get('/api/news', async (req, res) => {
+  try {
+    const query = NEWS_QUERIES[req.query.cat];
+    if (!query) return res.status(400).json({ error: 'unknown category' });
+    const { q, hl, gl } = query;
+    const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(q)}&hl=${hl}&gl=${gl}&ceid=${gl}:${hl.split('-')[0]}`;
+    const rssRes = await fetch(rssUrl, { signal: AbortSignal.timeout(10000) });
+    if (!rssRes.ok) throw new Error('news fetch failed: ' + rssRes.status);
+    const xmlText = await rssRes.text();
+    const items = Array.from(xmlText.matchAll(/<item>([\s\S]*?)<\/item>/g)).slice(0, 15).map(([, block]) => ({
+      title: extractTag(block, 'title'),
+      link: extractTag(block, 'link'),
+      source: extractTag(block, 'source'),
+      pubDate: extractTag(block, 'pubDate')
+    }));
+    res.json({ items });
+  } catch (err) {
+    console.error('news proxy error:', err.message);
+    res.status(502).json({ error: 'news fetch failed' });
+  }
+});
+
+const YAHOO_SYMBOLS = { nifty: '^NSEI', sensex: '^BSESN' };
+
+app.get('/api/market', async (req, res) => {
+  try {
+    const entries = await Promise.all(Object.entries(YAHOO_SYMBOLS).map(async ([key, symbol]) => {
+      const quoteRes = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}`, {
+        signal: AbortSignal.timeout(10000),
+        headers: { 'User-Agent': 'Mozilla/5.0' }
+      });
+      if (!quoteRes.ok) throw new Error('quote fetch failed: ' + quoteRes.status);
+      const data = await quoteRes.json();
+      const meta = data.chart.result[0].meta;
+      return [key, { price: meta.regularMarketPrice, prevClose: meta.previousClose }];
+    }));
+    res.json(Object.fromEntries(entries));
+  } catch (err) {
+    console.error('market proxy error:', err.message);
+    res.status(502).json({ error: 'market fetch failed' });
+  }
+});
+
 // ---- WhatsApp alert via Twilio -------------------------------------------
 async function notifyParents(triggerText, reason) {
   const sid = process.env.TWILIO_ACCOUNT_SID;
