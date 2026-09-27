@@ -47,6 +47,8 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
+const { astroReferenceBlockFor } = require('./lib/astroReference');
+const { mindWinnerSupportBlock, doctorReportBlock } = require('./lib/mindSupport');
 
 const app = express();
 app.use(cors());
@@ -163,13 +165,56 @@ app.get('/', (req, res) => res.send('Thozha-Thozhi backend is running.'));
 app.post('/api/chat', async (req, res) => {
   console.log('Received /api/chat request from', req.headers.origin || 'unknown origin');
   try {
-    const { messages } = req.body;
+    const { messages, modes } = req.body;
     if (!Array.isArray(messages) || messages.length === 0) {
       return res.status(400).json({ error: 'messages required' });
     }
 
     const lastUserMsg = [...messages].reverse().find(m => m.role === 'user');
     const keywordHit = lastUserMsg ? keywordCrisisCheck(lastUserMsg.content) : false;
+
+    // Server-side reference grounding — the app itself never fetches or
+    // holds any of the underlying KP/Jyotisha astrology books or the
+    // OCD/mental-health journals; it just asks for a prediction (or a
+    // supportive/clinical reply) and this is where that gets grounded in
+    // real excerpts. See lib/astroReference.js and lib/mindSupport.js.
+    const modeList = Array.isArray(modes) && modes.length ? modes : ['councilor'];
+    const isDoctor = modeList.includes('doctor');
+    const isMindWinner = modeList.includes('councilor');
+
+    let augmentedMessages = messages;
+
+    const astroBlock = astroReferenceBlockFor(messages);
+    if (astroBlock) {
+      augmentedMessages = [
+        { role: 'user', content: astroBlock },
+        { role: 'assistant', content: "Understood — I'll draw on that for authentic style and substance." },
+        ...augmentedMessages
+      ];
+    }
+
+    // Doctor mode takes priority on a shared install (a verified doctor
+    // asking a clinical question gets the report-style framing even if
+    // Mind Winner is also selected on the same device).
+    if (isDoctor) {
+      const block = doctorReportBlock(messages);
+      if (block) {
+        augmentedMessages = [
+          { role: 'user', content: block },
+          { role: 'assistant', content: "Understood — I'll cite and draw on that directly." },
+          ...augmentedMessages
+        ];
+      }
+    } else if (isMindWinner) {
+      const block = mindWinnerSupportBlock(messages);
+      if (block) {
+        augmentedMessages = [
+          { role: 'user', content: block },
+          { role: 'assistant', content: "Understood — I'll keep my reply warm and supportive, grounded in that, without diagnosing or giving medical advice." },
+          ...augmentedMessages
+        ];
+      }
+    }
 
     const apiRes = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -182,7 +227,7 @@ app.post('/api/chat', async (req, res) => {
         model: MODEL,
         max_tokens: 400,
         system: SYSTEM_PROMPT,
-        messages: messages.map(m => ({ role: m.role, content: m.content }))
+        messages: augmentedMessages.map(m => ({ role: m.role, content: m.content }))
       })
     });
 
