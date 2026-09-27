@@ -1,5 +1,5 @@
 {
-  "version": "1.17.1",
-  "notes": "You'll now get a notification when a new update is ready to install. Jadhagam readings now also accept a photo or a Word document, not just a PDF. Acupressure relief now covers neck/shoulders, stomach, and hands/wrists/knees, with gentler guidance for kids and seniors. Fixed the News tab being unreachable on some screens. New: one-tap \"share my location\" with your contacts, and a Vitals log (blood pressure, sugar, weight) under Medicine. Also new: a daily \"how are you\" check-in that quietly lets your family know if it goes unanswered.",
+  "version": "1.18.0",
+  "notes": "Fixed News and Markets not loading (they now go through our own server instead of a flaky public relay — needs the latest server.js deployed too). Refreshed the colour palette, and the bottom tabs are now icons. You can add a profile picture from Settings, shown at the top of the app. Added full text versions of Pulippani Jothidam 300 and Sothidam Munnuru (previously only Agastiyar Arudam had one) so all three classical references are on-device. Jadhagam and Astro readings now give a full Jothida Palan grounded in real excerpts from these texts — field of study for kids, business vs. job for adults, marriage age and children, health to watch for later in life, favourable/difficult life periods, and Parikaram (temples/remedies) for hard times.",
   "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk"
 }
