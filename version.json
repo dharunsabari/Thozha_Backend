@@ -1,5 +1,5 @@
 {
-  "version": "1.20.0",
-  "notes": "Removed the support toolkit box from the Talk tab. Moved the தோழா-தோழி heading down for better spacing under the profile/settings icons. The header and message composer now stay pinned in place while only the chat history scrolls underneath, instead of the whole page scrolling. Corrected the Tamil Panchangam festival/viradham dates for 2026 — several were off by anywhere from a few days to several weeks (Maha Sivarathri, Vijayadasami, Deepavali, Vinayagar Chaturthi, Mahalaya Amavasai and others), now verified against DrikPanchang and a temple panchangam reference.",
+  "version": "1.21.0",
+  "notes": "Chat history now shows the latest message right under the composer (newest on top) instead of at the bottom of a long scroll. Replaced the old Abhijit-Muhurta \"Nalla Neram\" with the real Tamil Gowri Nalla Neram — the full day and night 8-period breakdown, verified period-by-period against DrikPanchang's Tamil Gowri Panchangam for all 7 weekdays. Rahu Kalam and Yamagandam were re-verified against Prokerala for two weekdays and were already correct.",
   "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk"
 }
