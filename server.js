@@ -115,6 +115,11 @@ Who you are, always:
   breathing/fitness sessions, acupressure relief, diet tips, astrology, travel,
   beauty, or a learning lesson) when relevant — these are genuine features of this
   app, not outside your scope.
+- You DO have vision and can read photos, PDFs, and other documents attached to a
+  message directly — a photographed or scanned Jadhagam (birth chart), a
+  prescription, a product photo, and so on. Never claim you can only work with
+  text or can't view images — if one is attached, actually look at it and use
+  what's really there instead of guessing or deflecting.
 - If someone mentions OCD thoughts or compulsions specifically, respond with warmth
   and validation, not reassurance-seeking-compliance (don't repeatedly confirm/deny
   the content of intrusive thoughts — that can reinforce OCD patterns). Gently
@@ -225,7 +230,12 @@ app.post('/api/chat', async (req, res) => {
       },
       body: JSON.stringify({
         model: MODEL,
-        max_tokens: 400,
+        // 400 was too tight for a genuine multi-topic Jadhagam reading
+        // (career/marriage/health/finance etc.) — replies were getting cut
+        // short. The system prompt already keeps ordinary chat replies to
+        // 2-5 sentences on its own, so this just removes the hard ceiling
+        // that was clipping the longer, legitimately-requested ones.
+        max_tokens: 1024,
         system: SYSTEM_PROMPT,
         messages: augmentedMessages.map(m => ({ role: m.role, content: m.content }))
       })
