@@ -1,5 +1,5 @@
 {
-  "version": "1.23.0",
-  "notes": "Jadhagam upload fix: the whole internal instruction paragraph was showing up as your own chat message instead of a clean \"Here's my Jadhagam\" line — moved the detailed reading instructions to hidden context so the visible chat stays clean, and reworded them to explicitly demand an actual jadhaga palan rather than just an acknowledgement. IMPORTANT: also found a live backend bug via direct testing — the deployed chat backend currently claims it \"can only work with text\" and never actually reads an attached photo/PDF at all. Fixed in this update-site's server.js (added an explicit \"you do have vision, never claim otherwise\" instruction, and raised the reply length cap from 400 to 1024 tokens so a real reading doesn't get cut short) — but this needs server.js + lib + data redeployed to the Render backend to actually take effect; the APK/GitHub Pages update alone won't fix it.",
+  "version": "1.24.0",
+  "notes": "Medicine tab: new 'Find the right doctor' — enter symptoms, local-doctor medicines and lab/scan reports; a senior-physician-style review grounded in Davidson's Principles and Practice of Medicine shows how urgent it is and which allopathy or AYUSH specialist to see, with links to verify and locate doctors. Needs the backend redeployed (server.js + lib + data/medicine).",
   "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk"
 }

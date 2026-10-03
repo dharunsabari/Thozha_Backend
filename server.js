@@ -49,10 +49,12 @@ const cors = require('cors');
 require('dotenv').config();
 const { astroReferenceBlockFor } = require('./lib/astroReference');
 const { mindWinnerSupportBlock, doctorReportBlock } = require('./lib/mindSupport');
+const { adviseSpecialist } = require('./lib/medicineAdvisor');
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+// 25mb: the Medicine tab's specialist finder accepts photos/PDFs of lab and scan reports.
+app.use(express.json({ limit: '25mb' }));
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const MODEL = 'claude-sonnet-4-6';
@@ -504,6 +506,33 @@ async function notifyParents(triggerText, reason) {
     toNumbers.map(to => twilio.messages.create({ from, to, body }))
   );
 }
+
+// ---- Medicine tab: senior-MD specialist finder -----------------------------
+// Takes symptoms / local-doctor medication / report photos, grounds the
+// reasoning in Davidson's Principles and Practice of Medicine (lib/
+// medicineAdvisor.js) and returns triage urgency + the right specialist(s),
+// allopathy and AYUSH, with official-directory links for finding them.
+app.post('/api/specialist-advice', async (req, res) => {
+  try {
+    const b = req.body || {};
+    const clip = (v, n) => (typeof v === 'string' ? v.slice(0, n) : '');
+    const input = {
+      symptoms: clip(b.symptoms, 4000), duration: clip(b.duration, 500), age: clip(String(b.age || ''), 10),
+      sex: clip(b.sex, 20), conditions: clip(b.conditions, 1500), localMedication: clip(b.localMedication, 3000),
+      reportText: clip(b.reportText, 12000), city: clip(b.city, 80), state: clip(b.state, 60),
+      pincode: clip(String(b.pincode || ''), 10), language: clip(b.language, 30),
+      reports: Array.isArray(b.reports) ? b.reports.slice(0, 6) : []
+    };
+    if (!input.symptoms.trim() && !input.reportText.trim() && !input.reports.length) {
+      return res.status(400).json({ error: 'Please describe your symptoms or add a report.' });
+    }
+    const advice = await adviseSpecialist({ input, anthropicKey: ANTHROPIC_API_KEY, model: MODEL });
+    res.json({ advice });
+  } catch (err) {
+    console.error('specialist-advice failed:', err.message);
+    res.status(500).json({ error: 'Could not analyse right now. If this is an emergency, call 108 or go to the nearest hospital.' });
+  }
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`தோழா-தோழி (Thozha-Thozhi) backend running on port ${PORT}`));
