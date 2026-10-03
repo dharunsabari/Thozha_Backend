@@ -1,5 +1,5 @@
-{
-  "version": "1.24.0",
-  "notes": "Medicine tab: new 'Find the right doctor' — enter symptoms, local-doctor medicines and lab/scan reports; a senior-physician-style review grounded in Davidson's Principles and Practice of Medicine shows how urgent it is and which allopathy or AYUSH specialist to see, with links to verify and locate doctors. Needs the backend redeployed (server.js + lib + data/medicine).",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk"
+﻿{
+    "version":  "1.24.0",
+    "notes":  "Medicine tab: new \u0027Find the right doctor\u0027 - enter symptoms, local-doctor medicines and lab/scan reports; a senior-physician-style review grounded in Davidson\u0027s Principles and Practice of Medicine shows how urgent it is and which allopathy or AYUSH specialist to see, with links to verify and locate doctors.",
+    "apkUrl":  "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk"
 }
