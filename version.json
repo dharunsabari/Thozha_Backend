@@ -1,5 +1,5 @@
-﻿{
-    "version":  "1.24.0",
-    "notes":  "Medicine tab: new \u0027Find the right doctor\u0027 - enter symptoms, local-doctor medicines and lab/scan reports; a senior-physician-style review grounded in Davidson\u0027s Principles and Practice of Medicine shows how urgent it is and which allopathy or AYUSH specialist to see, with links to verify and locate doctors.",
-    "apkUrl":  "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk"
+{
+  "version": "1.25.0",
+  "notes": "Chat fixes: replies no longer repeat the same line for every question, long answers (news, lessons, readings) now arrive complete instead of cut short, and asking for news pulls live headlines. New Pause / Back / Next controls while a reply is read aloud. Learn answers now draw on the NISM Research Analyst workbook.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.25.0"
 }
