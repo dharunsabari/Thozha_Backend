@@ -1,5 +1,5 @@
 {
-  "version": "1.25.0",
-  "notes": "Chat fixes: replies no longer repeat the same line for every question, long answers (news, lessons, readings) now arrive complete instead of cut short, and asking for news pulls live headlines. New Pause / Back / Next controls while a reply is read aloud. Learn answers now draw on the NISM Research Analyst workbook.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.25.0"
+  "version": "1.25.1",
+  "notes": "Fixes the update prompt that kept offering 1.25 after installing it. No other changes.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.25.1"
 }
