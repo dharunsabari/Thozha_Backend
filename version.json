@@ -1,5 +1,5 @@
-{
-  "version": "1.27.0",
-  "notes": "Radio tab now has news radio: BBC World Service, CNN International, CNN Radio, LBC News, Times Radio, Sky News Radio, Bloomberg Radio, WAMU (NPR) and SLBC Tamil National Service.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.27.0"
+﻿{
+  "version": "1.28.0",
+  "notes": "New KP Muhurtham (GuruAgasthiya 3.3.1) in Lifestyle: lagna sub-lord timings, GMP 3,11, rules, cuspal chart, lost & found, horse race, GMP Prasnam, Chandra muhurtham and alarm.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.28.0"
 }
