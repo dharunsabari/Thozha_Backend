@@ -1,5 +1,5 @@
 {
-  "version": "1.25.1",
-  "notes": "Fixes the update prompt that kept offering 1.25 after installing it. No other changes.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.25.1"
+  "version": "1.26.1",
+  "notes": "Radio tab now includes All India Radio Tamil: FM Rainbow Chennai, FM Gold Chennai, Vividh Bharati Tamil and AIR Tamil, alongside the existing Tamil FM stations.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.26.1"
 }
