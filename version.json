@@ -1,5 +1,9 @@
 {
-  "version": "1.30.0",
-  "notes": "New app guide: tap the ? button to see what Thozha can do, and listen to it in Tamil.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.30.0"
+  "version": "1.30.1",
+  "notes": "New app guide (tap ?) with Tamil voice, and a 'Go back to earlier version' option in Settings.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.30.1",
+  "previous": {
+    "version": "1.29.0",
+    "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-previous.apk?v=1.29.0"
+  }
 }
