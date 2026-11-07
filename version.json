@@ -1,9 +1,5 @@
 {
-  "version": "1.30.1",
-  "notes": "New app guide (tap ?) with Tamil voice, and a 'Go back to earlier version' option in Settings.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.30.1",
-  "previous": {
-    "version": "1.29.0",
-    "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-previous.apk?v=1.29.0"
-  }
+  "version": "1.31.0",
+  "notes": "New Gemini-style chat: messages fill the screen, input pinned at the bottom with a compact header.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.31.0"
 }
