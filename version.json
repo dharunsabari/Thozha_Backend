@@ -1,5 +1,5 @@
 {
-  "version": "1.32.0",
-  "notes": "New Games tab: Paramapadham, Thayam, Pallanguzhi, Vocabulary, Tamil word jumble, Vidukadhai, Vyaaparam, World Geography and Kaasu Kalai - play together as a family with scores and a daily streak.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.32.0"
+  "version": "1.31.0",
+  "notes": "New Gemini-style chat: messages fill the screen, input pinned at the bottom with a compact header.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.31.0"
 }
