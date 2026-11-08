@@ -1,5 +1,5 @@
 {
-  "version": "1.33.2",
-  "notes": "Game rooms: wakes the server early, retries, and shows a clear message when the server is asleep or offline. Thayam rebuilt on the traditional 7x7 board.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.33.2"
+  "version": "1.33.5",
+  "notes": "Thayam 2-player rule: once one player has made a Vettu and all their riders are inside the irangu, the other player can never cut, so the first player is declared the winner at once.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.33.5"
 }
