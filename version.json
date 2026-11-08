@@ -1,5 +1,5 @@
 {
-  "version": "1.33.5",
-  "notes": "Thayam 2-player rule: once one player has made a Vettu and all their riders are inside the irangu, the other player can never cut, so the first player is declared the winner at once.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.33.5"
+  "version": "1.33.6",
+  "notes": "Thayam: irangu squares moved to the marked squares for all players, final square before the Veedu marked 1-4 (needs Thayam to finish), and the sovi now tumble and land with animation.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.33.6"
 }
