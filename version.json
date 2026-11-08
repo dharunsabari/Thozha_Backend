@@ -1,5 +1,5 @@
 {
-  "version": "1.33.6",
-  "notes": "Thayam: irangu squares moved to the marked squares for all players, final square before the Veedu marked 1-4 (needs Thayam to finish), and the sovi now tumble and land with animation.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.33.6"
+  "version": "1.33.7",
+  "notes": "Game rooms: the server is woken as soon as the Games tab opens, and the create/join screen shows a live waiting countdown. Thayam route and sovi animation from 1.33.6.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.33.7"
 }
