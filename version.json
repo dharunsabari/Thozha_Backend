@@ -1,5 +1,5 @@
 {
-  "version": "1.38.0",
-  "notes": "New game: Hidden Words — a word search that starts with 3-letter words, then 4, 5, 6 and beyond as you pass each level. Plus musical lullabies, narrated stories, Sign out, Word Builder and the new Kaasu Kalai.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.38.0"
+  "version": "1.39.0",
+  "notes": "Baby Corner: record lullabies in your own family's voice - mother, father, grandparents - and play them to the baby with soft music and a sleep timer (recordings stay on the phone). Fixed the Lullabies tab not opening after Stories. Plus Hidden Words, musical lullabies, narrated stories, Sign out.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.39.0"
 }
