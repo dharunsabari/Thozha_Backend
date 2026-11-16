@@ -1,5 +1,5 @@
 {
-  "version": "1.41.0",
-  "notes": "Baby Corner: lullabies in your family's voice colour, made ON the phone - record any song, tap Use this voice for all songs, then every lullaby can be sung in that tone and pitch. Nothing is uploaded. Plus recording your own lullabies, Hidden Words, musical lullabies, narrated stories, Sign out.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.41.0"
+  "version": "1.41.1",
+  "notes": "Fixed voice recording asking for microphone permission even when allowed: recording is now native. New: load a voice file from the phone, or record with another app. Family voice colour lullabies, Hidden Words, musical lullabies, narrated stories, Sign out.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.41.1"
 }
