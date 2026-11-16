@@ -1,5 +1,5 @@
 {
-  "version": "1.37.5",
-  "notes": "All 15 Thalattu lullabies re-made as musical songs (note-by-note melody, female and male voices, soft backing). Stories narrated in Tamil. New Sign out button in Settings locks the app. Baby names, Word Builder and the new Kaasu Kalai included.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.37.5"
+  "version": "1.38.0",
+  "notes": "New game: Hidden Words — a word search that starts with 3-letter words, then 4, 5, 6 and beyond as you pass each level. Plus musical lullabies, narrated stories, Sign out, Word Builder and the new Kaasu Kalai.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.38.0"
 }
