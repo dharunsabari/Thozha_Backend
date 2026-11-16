@@ -1,5 +1,5 @@
 {
-  "version": "1.39.0",
-  "notes": "Baby Corner: record lullabies in your own family's voice - mother, father, grandparents - and play them to the baby with soft music and a sleep timer (recordings stay on the phone). Fixed the Lullabies tab not opening after Stories. Plus Hidden Words, musical lullabies, narrated stories, Sign out.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.39.0"
+  "version": "1.40.0",
+  "notes": "Baby Corner: family voice packs - lullabies re-sung in the tone colour and pitch range of a family member (made with the clone tool), shown under each song. Record lullabies in your own voice, Hidden Words, musical lullabies, narrated stories, Sign out.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.40.0"
 }
