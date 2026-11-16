@@ -1,5 +1,5 @@
 {
-  "version": "1.38.0",
-  "notes": "New game: Hidden Words — a word search that starts with 3-letter words, then 4, 5, 6 and beyond as you pass each level. Plus musical lullabies, narrated stories, Sign out, Word Builder and the new Kaasu Kalai.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.38.0"
+  "version": "1.38.1",
+  "notes": "Smaller download (under 25 MB): lullaby and story audio compressed. Hidden Words game, musical lullabies, narrated stories, Sign out, Word Builder and the new Kaasu Kalai.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.38.1"
 }
