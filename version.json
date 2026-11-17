@@ -1,5 +1,5 @@
 {
-  "version": "1.41.1",
-  "notes": "Fixed voice recording asking for microphone permission even when allowed: recording is now native. New: load a voice file from the phone, or record with another app. Family voice colour lullabies, Hidden Words, musical lullabies, narrated stories, Sign out.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.41.1"
+  "version": "1.41.2",
+  "notes": "Family voice: saving a recording now learns that person's voice automatically, and every song shows a Sing in Amma's voice button near the top. Earlier recordings are picked up automatically. Plus native recording, load voice files, Hidden Words, musical lullabies, narrated stories.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.41.2"
 }
