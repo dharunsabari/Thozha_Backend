@@ -1,5 +1,5 @@
 {
-  "version": "1.46.0",
-  "notes": "New Pay tab (UPI helper): scan a UPI QR or enter a UPI ID, review, and pay with your own UPI app (Google Pay, PhonePe, Paytm, BHIM). Save payees, show your own receive QR, and add payments to Finance. Thozha never sees your PIN. Also QR calls, Google Cast, TV remote.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.46.0"
+  "version": "1.47.0",
+  "notes": "TV tab: new Switch ON TV button (Wake-on-LAN + auto reconnect). Enter the TV's Wi-Fi MAC address once and turn on Wake on LAN / Network standby in the TV settings. Also Pay tab, QR calls, Google Cast.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.47.0"
 }
