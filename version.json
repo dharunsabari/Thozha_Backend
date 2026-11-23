@@ -1,5 +1,5 @@
 {
-  "version": "1.51.1",
-  "notes": "Direct calls fix: the Direct option now tells you exactly which permission is missing (Nearby devices, Microphone, Location) and has Allow and Open settings buttons, and tapping Direct no longer fails silently. Contact rows fit large fonts.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.51.1"
+  "version": "1.51.2",
+  "notes": "Direct calls fix: your phone now becomes visible for Direct calls as soon as permissions are allowed (it was not retrying), and shows 'This phone is visible'. Pairing now ends with a second QR so both phones list each other. Open Calls on both phones, turn Direct ON, and pair once with the two-step QR."
+  ,"apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.51.2"
 }
