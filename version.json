@@ -1,5 +1,5 @@
 {
-  "version": "1.41.2",
-  "notes": "Family voice: saving a recording now learns that person's voice automatically, and every song shows a Sing in Amma's voice button near the top. Earlier recordings are picked up automatically. Plus native recording, load voice files, Hidden Words, musical lullabies, narrated stories.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.41.2"
+  "version": "1.43.0",
+  "notes": "New TV tab: use your phone as a remote for Android TV / Google TV, and show phone photos and videos on the TV over Wi-Fi (DLNA). Includes the Calls tab from 1.42.0.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.43.0"
 }
