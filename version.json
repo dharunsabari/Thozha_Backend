@@ -1,5 +1,5 @@
 {
-  "version": "1.47.0",
-  "notes": "TV tab: new Switch ON TV button (Wake-on-LAN + auto reconnect). Enter the TV's Wi-Fi MAC address once and turn on Wake on LAN / Network standby in the TV settings. Also Pay tab, QR calls, Google Cast.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.47.0"
+  "version": "1.47.1",
+  "notes": "TV tab fix: after you switch the TV off, the Switch ON TV button now appears (it is also always available under the remote). Wake-on-LAN needs the TV's Wi-Fi MAC address and the TV's Wake on LAN setting turned on.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.47.1"
 }
