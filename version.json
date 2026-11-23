@@ -1,5 +1,5 @@
 {
-  "version": "1.43.0",
-  "notes": "New TV tab: use your phone as a remote for Android TV / Google TV, and show phone photos and videos on the TV over Wi-Fi (DLNA). Includes the Calls tab from 1.42.0.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.43.0"
+  "version": "1.43.1",
+  "notes": "TV tab: you can now remove a TV you added (tap the X next to it). Includes Calls and TV remote / cast.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.43.1"
 }
