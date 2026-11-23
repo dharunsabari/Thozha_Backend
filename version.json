@@ -1,5 +1,5 @@
 {
-  "version": "1.50.0",
-  "notes": "Calls now ring when Thozha is closed or the phone is locked (background service + full-screen call screen). New typing bar: tap any text box and a large typing bar appears right above the keyboard so you can always see what you type (switch in Settings). TV voice commands (TV on/off, volume, mute, channel, home, pause) in English and Tamil. Allow notifications and 'run in background' when asked.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.50.0"
+  "version": "1.51.0",
+  "notes": "Direct calls with no Wi-Fi, no hotspot and no internet: phones link straight to each other (Bluetooth + Wi-Fi Direct) within about 30-100 m. Turn on 'Direct calls' in Calls on both phones. Also background ringing when locked, typing bar above the keyboard, TV voice commands, Home (fan/light), one-tap contact calls.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.51.0"
 }
