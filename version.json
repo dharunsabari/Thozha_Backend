@@ -1,5 +1,5 @@
 {
-  "version": "1.52.0",
-  "notes": "Longer-range calls with no internet: put a router/access point in the middle and join both phones; calls now stay on that Wi-Fi even if mobile data is on. New Wi-Fi link test (Calls) shows speed, lost packets and signal so you can find your range. Also Direct-call diagnostics and Bluetooth-off warning."
-  ,"apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.52.0"
+  "version": "1.52.1",
+  "notes": "Voice commands right on the TV remote and Home screens: tap 'Speak a command' and say 'TV off', 'volume up', 'mute', 'fan on' (English or Tamil). It runs the command and stays on the same screen, without opening chat or the AI."
+  ,"apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.52.1"
 }
