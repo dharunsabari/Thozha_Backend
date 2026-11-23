@@ -1,5 +1,5 @@
 {
-  "version": "1.44.0",
-  "notes": "TV tab now supports Google Cast (Chromecast / Google TV) - show phone photos and videos on your TV with nothing to install on it. Also DLNA, TV remote, Calls tab, and remove-TV button.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.44.0"
+  "version": "1.46.0",
+  "notes": "New Pay tab (UPI helper): scan a UPI QR or enter a UPI ID, review, and pay with your own UPI app (Google Pay, PhonePe, Paytm, BHIM). Save payees, show your own receive QR, and add payments to Finance. Thozha never sees your PIN. Also QR calls, Google Cast, TV remote.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.46.0"
 }
