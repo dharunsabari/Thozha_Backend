@@ -1,5 +1,5 @@
 {
-  "version": "1.47.2",
-  "notes": "TV tab: the Switch ON TV button now always stays visible, before and after pairing. Needs the TV's Wi-Fi MAC address and Wake on LAN turned on in the TV settings.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.47.2"
+  "version": "1.50.0",
+  "notes": "Calls now ring when Thozha is closed or the phone is locked (background service + full-screen call screen). New typing bar: tap any text box and a large typing bar appears right above the keyboard so you can always see what you type (switch in Settings). TV voice commands (TV on/off, volume, mute, channel, home, pause) in English and Tamil. Allow notifications and 'run in background' when asked.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.50.0"
 }
