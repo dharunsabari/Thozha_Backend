@@ -1,5 +1,5 @@
 {
-  "version": "1.52.2",
-  "notes": "Voice commands fix: Speak a command now shows a clear 'Listening' box with what it hears and a Cancel button, and shows the real reason if the phone's speech engine stops (microphone blocked, needs internet, language not supported, no speech). Works offline when the phone has an offline speech pack."
-  ,"apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.52.2"
+  "version": "1.52.3",
+  "notes": "Voice commands fix: Speak a command on the TV and Home screens now has its own microphone listener, separate from the chat mic, so it no longer says 'didn't hear anything' when the chat mic works. It tries every alternative the phone heard, shows what it hears, and explains any problem."
+  ,"apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.52.3"
 }
