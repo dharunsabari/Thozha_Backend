@@ -1,5 +1,5 @@
 {
-  "version": "1.52.1",
-  "notes": "Voice commands right on the TV remote and Home screens: tap 'Speak a command' and say 'TV off', 'volume up', 'mute', 'fan on' (English or Tamil). It runs the command and stays on the same screen, without opening chat or the AI."
-  ,"apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.52.1"
+  "version": "1.52.2",
+  "notes": "Voice commands fix: Speak a command now shows a clear 'Listening' box with what it hears and a Cancel button, and shows the real reason if the phone's speech engine stops (microphone blocked, needs internet, language not supported, no speech). Works offline when the phone has an offline speech pack."
+  ,"apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.52.2"
 }
