@@ -1,5 +1,5 @@
 {
-  "version": "1.52.3",
-  "notes": "Voice commands fix: Speak a command on the TV and Home screens now has its own microphone listener, separate from the chat mic, so it no longer says 'didn't hear anything' when the chat mic works. It tries every alternative the phone heard, shows what it hears, and explains any problem."
-  ,"apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.52.3"
+  "version": "1.53.0",
+  "notes": "Voice commands upgrade: Speak a command now opens a list of all commands with an English / Tamil switch. New commands: Switch on TV, Pause TV, Play TV, Channel up/down, Cursor up/down/left/right, OK, Back, Home. Tamil commands now work (the phone listens in Tamil when you choose Tamil). Tap a command or tap the mic and say it. Same list for fan and light commands."
+  ,"apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.53.0"
 }
