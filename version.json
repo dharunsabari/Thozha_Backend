@@ -1,5 +1,5 @@
 {
-  "version": "1.51.0",
-  "notes": "Direct calls with no Wi-Fi, no hotspot and no internet: phones link straight to each other (Bluetooth + Wi-Fi Direct) within about 30-100 m. Turn on 'Direct calls' in Calls on both phones. Also background ringing when locked, typing bar above the keyboard, TV voice commands, Home (fan/light), one-tap contact calls.",
-  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.51.0"
+  "version": "1.51.1",
+  "notes": "Direct calls fix: the Direct option now tells you exactly which permission is missing (Nearby devices, Microphone, Location) and has Allow and Open settings buttons, and tapping Direct no longer fails silently. Contact rows fit large fonts.",
+  "apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.51.1"
 }
