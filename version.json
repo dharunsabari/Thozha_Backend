@@ -1,5 +1,5 @@
 {
-  "version": "1.53.0",
-  "notes": "Voice commands upgrade: Speak a command now opens a list of all commands with an English / Tamil switch. New commands: Switch on TV, Pause TV, Play TV, Channel up/down, Cursor up/down/left/right, OK, Back, Home. Tamil commands now work (the phone listens in Tamil when you choose Tamil). Tap a command or tap the mic and say it. Same list for fan and light commands."
-  ,"apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.53.0"
+  "version": "1.54.0",
+  "notes": "New Car tab: control a car through any SMS-based GSM car-control kit. Save the kit's number and command words, then tap Lock, Unlock, Open boot, Where is my car, Cut engine, Restore engine. Thozha opens your Messages with the command typed and you tap Send. Voice commands in English and Tamil (lock the car, open the boot, where is my car)."
+  ,"apkUrl": "https://dharunsabari.github.io/Thozha_Backend/Thozha-debug.apk?v=1.54.0"
 }
